@@ -3,6 +3,12 @@ Exploring the A9 Camera model: the PCB, components, communication, shell, firmwa
 
 ![A9Camera_front_plate1](./pictures/front_plate1.png)
 
+
+---
+
+## Read path:
+1. [initial_connect.md](./interactions/uart2_connect/initial_connect.md) -> initial connection to the UART2 ports and analysis of the output 
+
 ---
 
 
@@ -30,4 +36,13 @@ Medium importance:
 Low importance:
 - [ ] Reverse engineering of the PCB
 
+
+
+
+---
+
+### AI usage
+
+For many theory deep things, I've used Gemini AI and Claude. They provided some approximate responses for all the ambiguous notion.
+I'm well aware that AI might give some bad responses sometimes, but almost, if not all, things here, were written by hand from the AI response (meaning I tried to filter any AI hallucinations).
 
