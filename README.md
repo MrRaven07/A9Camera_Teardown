@@ -1,13 +1,16 @@
 # A9Camera_Teardown
 Exploring the A9 Camera model: the PCB, components, communication, shell, firmware... 
 
-![A9Camera_front_plate1](./pictures/front_plate1.png)
+<div align="center">
+    <img src="./pictures/front_plate1.png" width="50%" alt="front_plate1"/>
+</div>
 
 
 ---
 
 ## Read path:
 1. [initial_connect.md](./interactions/uart2_connect/initial_connect.md) -> initial connection to the UART2 ports and analysis of the output 
+2. [visible_pins.md](./interactions/pins/pins_list.md)
 
 ---
 

@@ -4,16 +4,18 @@
 On the front plate, there are multiple pins (also some things on the back).
 
 
-<p align="center">
+<div align="center">
   <img src="../../pictures/front_plate1.png" width="40%" alt="front_plate1" />
   <img src="../../pictures/back_plate1.png" width="40%" alt="back_plate1" />
-</p>
+</div>
 
 ---
 
 Front Plate:
-- U1_TX
-- U1_RX
+- U1_TX (Transmitter pin)
+- U1_RX (Receiver pin)
+
+
 - U2_TX
 - U2_RX
 
