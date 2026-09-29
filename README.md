@@ -1,7 +1,16 @@
 # A9Camera_Teardown
 Exploring the A9 Camera model: the PCB, components, communication, shell, firmware... 
 
-![A9Camera_front_plate1](./pictures/front_plate1.png)
+<div align="center">
+    <img src="./pictures/front_plate1.png" width="70%" alt="front_plate1"/>
+</div>
+
+
+---
+
+## Read path:
+1. [initial_connect.md](./interactions/uart2_connect/initial_connect.md) -> initial connection to the UART2 ports and analysis of the output 
+2. [visible_pins.md](./interactions/pins/pins_list.md)
 
 ---
 
@@ -30,4 +39,13 @@ Medium importance:
 Low importance:
 - [ ] Reverse engineering of the PCB
 
+
+
+
+---
+
+### AI usage
+
+For many theory deep things, I've used Gemini AI and Claude. They provided some approximate responses for all the ambiguous notion.
+I'm well aware that AI might give some bad responses sometimes, but almost, if not all, things here, were written by hand from the AI response (meaning I tried to filter any AI hallucinations).
 
