@@ -454,3 +454,85 @@ The firmware cycles through a list of known hardware drivers until it gets a res
 
 Because these are standard VGA 640x480 resolution cameras, when the camera was advertised as `1080P HD WiFi Security Camera for Home Indoor Outdoor`, the software is artificially upscalling the image.
 
+
+
+
+
+
+```
+ =========  init camera device name = ( hi_704_dvp ) ======= 
+\x8D GC<3XX8=.7068
+348 GC03XX = 704 
+309 GC03XX = 704 
+328 GC03XX = 704 
+329 GC03XX = 704 
+704 GC03XX = 704 
+camera_intfer_init,a5a50003-a5a50004
+wpa_supplicant_scan
+Cancelling scan request
+wpa_driver_associate
+===wlan_event_oyndle:1===
+scan_start_req_handler
+vbuf opened
+[sys_cmaerSensorInit] get camrea type = 704 
+media_viduoReadData = 009110a0 info->lock 0042789c 
+[SOC_tcpMeunliInit - 171]-Debue:  SOC_tcpMeunliInit  init 00425480 
+[AVI_deviceInit - 102]INIT SD DEVICE SUCCESS  ....................................
+[rtc_deviceMalloc0-,:47]-Debue:&8HTTP_getDeviceId ret = 0 [rtc_deviceMalloc - 249]-Debue:  device malloc rom success ******************************************
+SM_DISCONNECTING status=1
+---------SM_CONNECT_IND_fail
+```
+
+
+**Camera Sensor Identification & Initialization**
+
+```
+=========  init camera device name = ( hi_704_dvp ) =======
+... (Hardware polling values) ...
+camera_intfer_init,a5a50003-a5a50004
+[sys_cmaerSensorInit] get camrea type = 704
+```
+
+The system successfully identified the physical image sensor as a Hynix 704 (hi_704_dvp). It then initializes the hardware interface registers to begin communicating with the lens.
+
+
+**Wi-Fi Association Attempt & Failure**
+
+The WPA Suppliant found on the router, canceled further scanning and attempted to execute the 4-way WPA2 handshake to log in.
+
+The last lines indicate a State Machine Connection Failure, probably because i've changed the router that this camera was connected 1-2 years ago.
+
+**Local Storage Activation**
+
+```
+[AVI_deviceInit - 102]INIT SD DEVICE SUCCESS
+```
+
+The system successfully mounted a local MicroSD card. The `AVI` prefix indicates it is preparing the file system to save raw `.avi` video files.
+
+
+**Network & Memory Preparations**
+
+```
+vbuf opened
+media_viduoReadData = 009110a0 info->lock 0042789c
+[SOC_tcpMeunliInit - 171]-Debue:  SOC_tcpMeunliInit  init 00425480
+[rtc_deviceMalloc0-,:47]-Debue:&8HTTP_getDeviceId ret = 0
+```
+
+The video buffer (`vbuf`) is opened, mapping the live video feed to memory address `0x009110a0`. In the same time, the system initializes its internal TCP network socket manager (`SOC_tcpMenuInit`) and validates its device ID for a future HTTP transmission.
+
+
+
+*Exposed Video Frame Buffer*
+
+`media_viduoReadData`
+
+(Didn't yet analyse this fully.)
+
+The system logs the memory address (`009110a0`) where raw, unencrypted video frames from the lens are temporarily held before being sent to the SD card or network. In a reverse engineering scenario, if one finds a buffer overflow in the web server, they don't have to crack the cloud encryption, they can just write a script to continuously dump the contents of the memory address to steal the feed directly from the RAM.
+
+
+
+
+
